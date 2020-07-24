@@ -12,6 +12,9 @@ export class Item {
 
 export class GildedRose {
     items: Array<Item>;
+    public static backstagePassName = 'Backstage passes to a TAFKAL80ETC concert'
+    public static agedBrie = 'Aged Brie'
+    public static sulfuras = 'Sulfuras, Hand of Ragnaros'
 
     constructor(items = [] as Array<Item>) {
         this.items = items;
@@ -20,16 +23,16 @@ export class GildedRose {
     updateQuality() {
         for (let i = 0; i < this.items.length; i++) {
           const item = this.items[i]
-            if (item.name != 'Aged Brie' && item.name != 'Backstage passes to a TAFKAL80ETC concert') {
+            if (item.name != GildedRose.agedBrie && item.name != GildedRose.backstagePassName) {
                 if (item.quality > 0) {
-                    if (item.name != 'Sulfuras, Hand of Ragnaros') {
+                    if (item.name != GildedRose.sulfuras) {
                         item.quality = item.quality - 1
                     }
                 }
             } else {
                 if (item.quality < 50) {
                     item.quality = item.quality + 1
-                    if (item.name == 'Backstage passes to a TAFKAL80ETC concert') {
+                    if (item.name == GildedRose.backstagePassName) {
                         if (item.sellIn < 11) {
                             if (item.quality < 50) {
                                 item.quality = item.quality + 1
@@ -43,14 +46,14 @@ export class GildedRose {
                     }
                 }
             }
-            if (item.name != 'Sulfuras, Hand of Ragnaros') {
+            if (item.name != GildedRose.sulfuras) {
                 item.sellIn = item.sellIn - 1;
             }
             if (item.sellIn < 0) {
-                if (item.name != 'Aged Brie') {
-                    if (item.name != 'Backstage passes to a TAFKAL80ETC concert') {
+                if (item.name != GildedRose.agedBrie) {
+                    if (item.name != GildedRose.backstagePassName) {
                         if (item.quality > 0) {
-                            if (item.name != 'Sulfuras, Hand of Ragnaros') {
+                            if (item.name != GildedRose.sulfuras) {
                                 item.quality = item.quality - 1
                             }
                         }
